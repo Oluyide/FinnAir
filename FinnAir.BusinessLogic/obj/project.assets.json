@@ -8595,11 +8595,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir.Api\\FinnAir.BusinessLogic\\FinnAir.BusinessLogic.csproj",
+      "projectUniqueName": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir\\FinnAir.BusinessLogic\\FinnAir.BusinessLogic.csproj",
       "projectName": "FinnAir.BusinessLogic",
-      "projectPath": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir.Api\\FinnAir.BusinessLogic\\FinnAir.BusinessLogic.csproj",
+      "projectPath": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir\\FinnAir.BusinessLogic\\FinnAir.BusinessLogic.csproj",
       "packagesPath": "C:\\Users\\OLUYIDE OLUMIDE\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir.Api\\FinnAir.BusinessLogic\\obj\\",
+      "outputPath": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir\\FinnAir.BusinessLogic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8618,8 +8618,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir.Api\\FinnAir.DataLayer\\FinnAir.DataLayer.csproj": {
-              "projectPath": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir.Api\\FinnAir.DataLayer\\FinnAir.DataLayer.csproj"
+            "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir\\FinnAir.DataLayer\\FinnAir.DataLayer.csproj": {
+              "projectPath": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir\\FinnAir.DataLayer\\FinnAir.DataLayer.csproj"
             }
           }
         }

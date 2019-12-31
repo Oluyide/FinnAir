@@ -7848,11 +7848,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir.Api\\FinnAir.DataLayer\\FinnAir.DataLayer.csproj",
+      "projectUniqueName": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir\\FinnAir.DataLayer\\FinnAir.DataLayer.csproj",
       "projectName": "FinnAir.DataLayer",
-      "projectPath": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir.Api\\FinnAir.DataLayer\\FinnAir.DataLayer.csproj",
+      "projectPath": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir\\FinnAir.DataLayer\\FinnAir.DataLayer.csproj",
       "packagesPath": "C:\\Users\\OLUYIDE OLUMIDE\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir.Api\\FinnAir.DataLayer\\obj\\",
+      "outputPath": "C:\\Users\\OLUYIDE OLUMIDE\\source\\repos\\FinnAir\\FinnAir.DataLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

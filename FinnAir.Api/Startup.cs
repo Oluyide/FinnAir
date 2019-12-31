@@ -21,14 +21,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Reflection;
 
 namespace FinnAir.Api
 {
     public class Startup
     {
+        private readonly string _apiVersion;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            _apiVersion = $"v{Assembly.GetEntryAssembly().GetName().Version}";
         }
 
         public IConfiguration Configuration { get; }
@@ -70,12 +73,12 @@ namespace FinnAir.Api
                 .AddEntityFrameworkStores<FinnAirContext>();
 
             services.AddScoped<IIdentityService, IdentityService>();
-            services.AddScoped<IFlightDetails, FlightDetailsRepo>();
+            services.AddScoped<IFlightDetailsService, FlightDetailsService>();
             
 
             services.AddSwaggerGen(x =>
             {
-                x.SwaggerDoc("v1", new Info { Title = "FinnAir API", Version = "v1" });
+                x.SwaggerDoc(_apiVersion, new Info { Title = "FinnAir API", Version = _apiVersion });
                 var security = new Dictionary<string, IEnumerable<string>>
                 {
                     {"Bearer", new String[0] }
@@ -93,7 +96,7 @@ namespace FinnAir.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, FinnAirContext context )
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, FinnAirContext context, IOptions<WebServerUrl> webServerSettings, ILoggerFactory loggerFactory, UserManager<IdentityUser> userManager)
         {
             if (env.IsDevelopment())
             {
@@ -111,16 +114,28 @@ namespace FinnAir.Api
 
             app.UseAuthentication();
 
-            var swaggerOptions = new SwaggerOptions();
-            Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
+            //var swaggerOptions = new SwaggerOptions();
+            //Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
 
-            app.UseSwagger(option => {
-                option.RouteTemplate = swaggerOptions.JsonRoute;
-            });
-            app.UseSwaggerUI(option => {
-                option.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description);
+            app.UseSwagger();
+            //app.UseSwaggerUI(option => {
+            //    option.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description);
+            //});
+            var virtualDir = "";
+            if (!env.IsDevelopment())
+            {
+                var webServerUrl = webServerSettings.Value;
+                virtualDir = webServerUrl.AppVirtualDir;
+            }
+
+            app.UseSwaggerUI(option =>
+            {
+                option.DocumentTitle = $"FinnAir API ({_apiVersion}) documentation";
+                option.SwaggerEndpoint(virtualDir + $"/swagger/{_apiVersion}/swagger.json", $"FinnAir API ({_apiVersion})");
             });
 
+            DbSeeder.SeedDb(userManager);
+            loggerFactory.AddFile("Logs/mylog-{Date}.txt");
             app.UseMvc();
         }
     }

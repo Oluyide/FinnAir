@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FinnAir.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class IdentityController : ControllerBase
     {
@@ -23,13 +23,13 @@ namespace FinnAir.Api.Controllers
             _identityService = identityService;
         }
 
-        [HttpPost("api/v1/Register")]
+        [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody] UserRegistrationRequest request)
         {
             var authResponse = await _identityService.RegisterAsync(request.Email, request.Password, _jwtSettings.Secret);
             if (!authResponse.Success)
             {
-                return BadRequest(new AuthFailResponse
+                return BadRequest(new FailResponse
                 {
                     Errors = authResponse.Errors
                 });
@@ -40,13 +40,13 @@ namespace FinnAir.Api.Controllers
             });
 
         }
-        [HttpPost("api/v1/Login")]
+        [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] UserLoginRequest request)
         {
             var authResponse = await _identityService.LoginAsync(request.Email, request.Password, _jwtSettings.Secret);
             if (!authResponse.Success)
             {
-                return BadRequest(new AuthFailResponse
+                return BadRequest(new FailResponse
                 {
                     Errors = authResponse.Errors
                 });
