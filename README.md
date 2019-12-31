@@ -2,7 +2,7 @@
 
 1 .The Pre-assignment was done using Asp.net Core C# and it makes use of Postgres SQL as the database
 
-2. A multilayered Achitecture was followed (the project contains 4 projects which are the FinnAir.Api, FinnAir.BusinessLogic,FinAir.DataAccessLayer and the FinnAir.Test)
+2. A multilayered Achitecture was used (the project contains 4 projects which are the FinnAir.Api, FinnAir.BusinessLogic,FinAir.DataAccessLayer and the FinnAir.Test)
 
 3. In the FinAir.Api project  there is need to change username and password for the database connection-strings in the appsettings.json and appsettings.development.json to suit yours.
 
