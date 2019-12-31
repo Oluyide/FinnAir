@@ -10,4 +10,4 @@
 
 5. There will also be need to run this command for the database initialization, which is "update-database -verbose"
 
-6. However the API are secured using the JWT bearer AuthenticationScheme
+6. However the APIs are secured using the JWT bearer AuthenticationScheme
