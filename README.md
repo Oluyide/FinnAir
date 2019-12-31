@@ -6,7 +6,7 @@
 
 3. In the FinAir.Api project  there is need to change username and password for the database connection-strings in the appsettings.json and appsettings.development.json to suit yours.
 
-4. The Api documentation was done using Swagger, on the lunch of the project the swagger page is expected to load.
+4. The Api documentation was done using Swagger, on the launch of the project the swagger page is expected to load.
 
 5. There will also be need to run this command for the database initialization, which is "update-database -verbose"
 
