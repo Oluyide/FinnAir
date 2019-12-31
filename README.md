@@ -9,3 +9,5 @@
 4. The Api documentation was done using Swagger, on the lunch of the project the swagger page is expected to load.
 
 5. There will also be need to run this command for the database initialization, which is "update-database -verbose"
+
+6. However the API are secured using the JWT bearer AuthenticationScheme
