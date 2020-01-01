@@ -12,4 +12,4 @@
 
 6. However the APIs are secured using the JWT bearer AuthenticationScheme.
 
-7. Logging was also implemented to monitor the status of the Endpoints.
+7. Logging was also implemented to monitor the status of the Endpoints and the general health of the app.
