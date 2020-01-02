@@ -3,12 +3,14 @@
 
 FROM microsoft/dotnet:2.2-aspnetcore-runtime-nanoserver-1803 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+EXPOSE 52078
+EXPOSE 44368
 
 FROM microsoft/dotnet:2.2-sdk-nanoserver-1803 AS build
 WORKDIR /src
 COPY ["FinnAir.Api/FinnAir.Api.csproj", "FinnAir.Api/"]
+COPY ["FinnAir.DataLayer/FinnAir.DataLayer.csproj", "FinnAir.DataLayer/"]
+COPY ["FinnAir.BusinessLogic/FinnAir.BusinessLogic.csproj", "FinnAir.BusinessLogic/"]
 RUN dotnet restore "FinnAir.Api/FinnAir.Api.csproj"
 COPY . .
 WORKDIR "/src/FinnAir.Api"

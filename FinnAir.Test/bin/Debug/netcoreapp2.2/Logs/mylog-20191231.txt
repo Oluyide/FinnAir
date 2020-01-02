@@ -3213,3 +3213,324 @@ LIMIT 2" (0723d8ff)
 2019-12-31T16:33:42.4951860+02:00 0HLSDVPMIGDF1 [INF] Executed action "FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)" in 79.3143ms (afa2e885)
 2019-12-31T16:33:42.4952730+02:00 0HLSDVPMIGDF1 [INF] Executed endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)"' (99874f2b)
 2019-12-31T16:33:42.4953936+02:00 0HLSDVPMIGDF1 [INF] Request finished in 107.1101ms 400 text/plain; charset=utf-8 (791a596a)
+2019-12-31T20:51:29.9923279+02:00 0HLSE49PAEJ9K [INF] Request starting HTTP/2.0 POST https://localhost:44368/Identity/Login application/json; charset=utf-8  (ca22a1cb)
+2019-12-31T20:51:30.1155644+02:00 0HLSE49PAEJ9K [INF] Executing endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (500cc934)
+2019-12-31T20:51:30.1497163+02:00 0HLSE49PAEJ9K [INF] Route matched with "{action = \"Login\", controller = \"Identity\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" (a44c0341)
+2019-12-31T20:51:30.1959863+02:00 0HLSE49PAEJ9K [INF] Executing action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" with arguments (["FinnAir.Api.Contracts.Request.UserLoginRequest"]) - Validation state: Valid (4e3479ed)
+2019-12-31T20:51:30.2056414+02:00 0HLSE49PAEJ9K [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T20:51:30.2275635+02:00 0HLSE49PAEJ9K [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT u.\"Id\", u.\"AccessFailedCount\", u.\"ConcurrencyStamp\", u.\"Email\", u.\"EmailConfirmed\", u.\"LockoutEnabled\", u.\"LockoutEnd\", u.\"NormalizedEmail\", u.\"NormalizedUserName\", u.\"PasswordHash\", u.\"PhoneNumber\", u.\"PhoneNumberConfirmed\", u.\"SecurityStamp\", u.\"TwoFactorEnabled\", u.\"UserName\"
+FROM \"AspNetUsers\" AS u
+WHERE u.\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 1" (0723d8ff)
+2019-12-31T20:51:30.2677201+02:00 0HLSE49PAEJ9K [INF] Executed action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 68.0213ms. (50a9e262)
+2019-12-31T20:51:30.2794524+02:00 0HLSE49PAEJ9K [INF] Executing ObjectResult, writing value of type '"FinnAir.Api.Contracts.AuthSuccessResponse"'. (8a1b66c8)
+2019-12-31T20:51:30.3108959+02:00 0HLSE49PAEJ9K [INF] Executed action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" in 156.1278ms (afa2e885)
+2019-12-31T20:51:30.3125013+02:00 0HLSE49PAEJ9K [INF] Executed endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (99874f2b)
+2019-12-31T20:51:30.3313094+02:00 0HLSE49PAEJ9K [INF] Request finished in 346.8127ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T20:51:30.3381371+02:00 0HLSE49PAEJ9L [INF] Request starting HTTP/2.0 GET https://localhost:44368/Passengers/1   (ca22a1cb)
+2019-12-31T20:51:30.3481973+02:00 0HLSE49PAEJ9L [INF] Successfully validated the token. (60169667)
+2019-12-31T20:51:30.3516004+02:00 0HLSE49PAEJ9L [INF] Executing endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)"' (500cc934)
+2019-12-31T20:51:30.3580340+02:00 0HLSE49PAEJ9L [INF] Route matched with "{action = \"GetPassengerById\", controller = \"Passengers\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)" (a44c0341)
+2019-12-31T20:51:30.3703231+02:00 0HLSE49PAEJ9L [INF] Authorization was successful. (0d575a54)
+2019-12-31T20:51:30.3726305+02:00 0HLSE49PAEJ9L [INF] Executing action method "FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)" with arguments (["1"]) - Validation state: Valid (4e3479ed)
+2019-12-31T20:51:30.3814375+02:00 0HLSE49PAEJ9L [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T20:51:30.7723720+02:00 0HLSE49PAEJ9L [INF] Executed DbCommand ("12"ms) [Parameters=["@__passengerId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"Id\" AS \"PassengerId\", x.\"Firstname\", x.\"LastName\", x.\"Email\", x.\"BookingId\", \"x.Booking\".\"Id\"
+FROM \"Passengers\" AS x
+LEFT JOIN \"Bookings\" AS \"x.Booking\" ON x.\"BookingId\" = \"x.Booking\".\"Id\"
+WHERE x.\"Id\" = @__passengerId_0
+ORDER BY x.\"Id\", \"x.Booking\".\"Id\"
+LIMIT 2" (0723d8ff)
+2019-12-31T20:51:30.8211706+02:00 0HLSE49PAEJ9L [INF] Executed DbCommand ("8"ms) [Parameters=["@__passengerId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT t.\"Id\", t.\"Id0\", (\"x.Flight\".\"CarrierCode\" || \"x.Flight\".\"FlightNumber\") AS \"FlightNumber\", \"x.Flight\".\"DepartureAirport\", \"x.Flight\".\"ArrivalAirport\", CAST(\"x.Flight\".\"DepartureDate\" AS text) AS \"DepartureDate\", CAST(\"x.Flight\".\"ArrivalDate\" AS text) AS \"ArrivalDate\", \"x.Booking.BookingFlight\".\"BookingId\"
+FROM \"BookingFlights\" AS \"x.Booking.BookingFlight\"
+INNER JOIN \"Flights\" AS \"x.Flight\" ON \"x.Booking.BookingFlight\".\"FlightId\" = \"x.Flight\".\"Id\"
+INNER JOIN (
+    SELECT x0.\"Id\", \"x.Booking0\".\"Id\" AS \"Id0\"
+    FROM \"Passengers\" AS x0
+    LEFT JOIN \"Bookings\" AS \"x.Booking0\" ON x0.\"BookingId\" = \"x.Booking0\".\"Id\"
+    WHERE x0.\"Id\" = @__passengerId_0
+    ORDER BY x0.\"Id\", \"x.Booking0\".\"Id\"
+    LIMIT 1
+) AS t ON \"x.Booking.BookingFlight\".\"BookingId\" = t.\"Id0\"
+ORDER BY t.\"Id\", t.\"Id0\"" (0723d8ff)
+2019-12-31T20:51:30.8436121+02:00 0HLSE49PAEJ9L [INF] Executed action method "FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 470.8297ms. (50a9e262)
+2019-12-31T20:51:30.8439728+02:00 0HLSE49PAEJ9L [INF] Executing ObjectResult, writing value of type '"FinnAir.BusinessLogic.Domain.CreatePassengerModel"'. (8a1b66c8)
+2019-12-31T20:51:30.8681061+02:00 0HLSE49PAEJ9L [INF] Executed action "FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)" in 509.9652ms (afa2e885)
+2019-12-31T20:51:30.8681841+02:00 0HLSE49PAEJ9L [INF] Executed endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)"' (99874f2b)
+2019-12-31T20:51:30.8686698+02:00 0HLSE49PAEJ9L [INF] Request finished in 530.5543ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T20:51:31.1001327+02:00 0HLSE49PAEJ9M [INF] Request starting HTTP/2.0 POST https://localhost:44368/Identity/Login application/json; charset=utf-8  (ca22a1cb)
+2019-12-31T20:51:31.1035858+02:00 0HLSE49PAEJ9M [INF] Executing endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (500cc934)
+2019-12-31T20:51:31.1105171+02:00 0HLSE49PAEJ9M [INF] Route matched with "{action = \"Login\", controller = \"Identity\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" (a44c0341)
+2019-12-31T20:51:31.1117124+02:00 0HLSE49PAEJ9M [INF] Executing action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" with arguments (["FinnAir.Api.Contracts.Request.UserLoginRequest"]) - Validation state: Valid (4e3479ed)
+2019-12-31T20:51:31.1123109+02:00 0HLSE49PAEJ9M [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T20:51:31.1256951+02:00 0HLSE49PAEJ9M [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT u.\"Id\", u.\"AccessFailedCount\", u.\"ConcurrencyStamp\", u.\"Email\", u.\"EmailConfirmed\", u.\"LockoutEnabled\", u.\"LockoutEnd\", u.\"NormalizedEmail\", u.\"NormalizedUserName\", u.\"PasswordHash\", u.\"PhoneNumber\", u.\"PhoneNumberConfirmed\", u.\"SecurityStamp\", u.\"TwoFactorEnabled\", u.\"UserName\"
+FROM \"AspNetUsers\" AS u
+WHERE u.\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 1" (0723d8ff)
+2019-12-31T20:51:31.1424056+02:00 0HLSE49PAEJ9M [INF] Executed action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 30.5657ms. (50a9e262)
+2019-12-31T20:51:31.1427810+02:00 0HLSE49PAEJ9M [INF] Executing ObjectResult, writing value of type '"FinnAir.Api.Contracts.AuthSuccessResponse"'. (8a1b66c8)
+2019-12-31T20:51:31.1429801+02:00 0HLSE49PAEJ9M [INF] Executed action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" in 32.4021ms (afa2e885)
+2019-12-31T20:51:31.1430262+02:00 0HLSE49PAEJ9M [INF] Executed endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (99874f2b)
+2019-12-31T20:51:31.1431155+02:00 0HLSE49PAEJ9M [INF] Request finished in 43.0113ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T20:51:31.1435365+02:00 0HLSE49PAEJ9N [INF] Request starting HTTP/2.0 GET https://localhost:44368/Passengers?flightNumber=&&departureDate=2019-12-12   (ca22a1cb)
+2019-12-31T20:51:31.1442158+02:00 0HLSE49PAEJ9N [INF] Successfully validated the token. (60169667)
+2019-12-31T20:51:31.1464288+02:00 0HLSE49PAEJ9N [INF] Executing endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (500cc934)
+2019-12-31T20:51:31.1507762+02:00 0HLSE49PAEJ9N [INF] Route matched with "{action = \"GetPassengers\", controller = \"Passengers\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" (a44c0341)
+2019-12-31T20:51:31.1512996+02:00 0HLSE49PAEJ9N [INF] Authorization was successful. (0d575a54)
+2019-12-31T20:51:31.1537264+02:00 0HLSE49PAEJ9N [INF] Executing action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" with arguments (["", "2019-12-12"]) - Validation state: Valid (4e3479ed)
+2019-12-31T20:51:31.1563696+02:00 0HLSE49PAEJ9N [INF] Flight number cannot be empty and Departure Time must be in this format 'yyyy - MMM - dd' (f47604d9)
+2019-12-31T20:51:31.1566358+02:00 0HLSE49PAEJ9N [INF] Executed action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.BadRequestObjectResult" in 2.8256ms. (50a9e262)
+2019-12-31T20:51:31.1568325+02:00 0HLSE49PAEJ9N [INF] Executing ObjectResult, writing value of type '"FinnAir.Api.Contracts.FailResponse"'. (8a1b66c8)
+2019-12-31T20:51:31.1585113+02:00 0HLSE49PAEJ9N [INF] Executed action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" in 7.6498ms (afa2e885)
+2019-12-31T20:51:31.1585950+02:00 0HLSE49PAEJ9N [INF] Executed endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (99874f2b)
+2019-12-31T20:51:31.1586706+02:00 0HLSE49PAEJ9N [INF] Request finished in 15.1574ms 400 application/json; charset=utf-8 (791a596a)
+2019-12-31T20:51:31.3336912+02:00 0HLSE49PAEJ9O [INF] Request starting HTTP/2.0 POST https://localhost:44368/Identity/Login application/json; charset=utf-8  (ca22a1cb)
+2019-12-31T20:51:31.3368697+02:00 0HLSE49PAEJ9O [INF] Executing endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (500cc934)
+2019-12-31T20:51:31.3438123+02:00 0HLSE49PAEJ9O [INF] Route matched with "{action = \"Login\", controller = \"Identity\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" (a44c0341)
+2019-12-31T20:51:31.3451555+02:00 0HLSE49PAEJ9O [INF] Executing action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" with arguments (["FinnAir.Api.Contracts.Request.UserLoginRequest"]) - Validation state: Valid (4e3479ed)
+2019-12-31T20:51:31.3459855+02:00 0HLSE49PAEJ9O [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T20:51:31.3615497+02:00 0HLSE49PAEJ9O [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT u.\"Id\", u.\"AccessFailedCount\", u.\"ConcurrencyStamp\", u.\"Email\", u.\"EmailConfirmed\", u.\"LockoutEnabled\", u.\"LockoutEnd\", u.\"NormalizedEmail\", u.\"NormalizedUserName\", u.\"PasswordHash\", u.\"PhoneNumber\", u.\"PhoneNumberConfirmed\", u.\"SecurityStamp\", u.\"TwoFactorEnabled\", u.\"UserName\"
+FROM \"AspNetUsers\" AS u
+WHERE u.\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 1" (0723d8ff)
+2019-12-31T20:51:31.3767942+02:00 0HLSE49PAEJ9O [INF] Executed action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 31.4617ms. (50a9e262)
+2019-12-31T20:51:31.3773472+02:00 0HLSE49PAEJ9O [INF] Executing ObjectResult, writing value of type '"FinnAir.Api.Contracts.AuthSuccessResponse"'. (8a1b66c8)
+2019-12-31T20:51:31.3775281+02:00 0HLSE49PAEJ9O [INF] Executed action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" in 33.6115ms (afa2e885)
+2019-12-31T20:51:31.3776117+02:00 0HLSE49PAEJ9O [INF] Executed endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (99874f2b)
+2019-12-31T20:51:31.3777585+02:00 0HLSE49PAEJ9O [INF] Request finished in 44.0836ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T20:51:31.3781857+02:00 0HLSE49PAEJ9P [INF] Request starting HTTP/2.0 GET https://localhost:44368/Passengers?flightNumber=00000&&departureDate=2019-12-12   (ca22a1cb)
+2019-12-31T20:51:31.3786209+02:00 0HLSE49PAEJ9P [INF] Successfully validated the token. (60169667)
+2019-12-31T20:51:31.3812600+02:00 0HLSE49PAEJ9P [INF] Executing endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (500cc934)
+2019-12-31T20:51:31.3868368+02:00 0HLSE49PAEJ9P [INF] Route matched with "{action = \"GetPassengers\", controller = \"Passengers\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" (a44c0341)
+2019-12-31T20:51:31.3872395+02:00 0HLSE49PAEJ9P [INF] Authorization was successful. (0d575a54)
+2019-12-31T20:51:31.3878272+02:00 0HLSE49PAEJ9P [INF] Executing action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" with arguments (["00000", "2019-12-12"]) - Validation state: Valid (4e3479ed)
+2019-12-31T20:51:31.3958542+02:00 0HLSE49PAEJ9P [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T20:51:31.4313664+02:00 0HLSE49PAEJ9P [WRN] The Include operation for navigation '"[p].Booking"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T20:51:31.4344526+02:00 0HLSE49PAEJ9P [WRN] The Include operation for navigation '"[p].Flight"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T20:51:31.4345442+02:00 0HLSE49PAEJ9P [WRN] The Include operation for navigation '"[p].Booking.Passenger"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T20:51:31.5395853+02:00 0HLSE49PAEJ9P [INF] Executed DbCommand ("28"ms) [Parameters=["@__flightNumber_0='?' (Size = 150), @__departureTime_1='?' (DbType = DateTime)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"p.Booking.Passenger\".\"Id\", \"p.Booking.Passenger\".\"BookingId\", \"p.Booking.Passenger\".\"Email\", \"p.Booking.Passenger\".\"Firstname\", \"p.Booking.Passenger\".\"LastName\"
+FROM \"BookingFlights\" AS p
+INNER JOIN \"Flights\" AS \"p.Flight\" ON p.\"FlightId\" = \"p.Flight\".\"Id\"
+INNER JOIN \"Bookings\" AS \"p.Booking\" ON p.\"BookingId\" = \"p.Booking\".\"Id\"
+INNER JOIN \"Passengers\" AS \"p.Booking.Passenger\" ON \"p.Booking\".\"Id\" = \"p.Booking.Passenger\".\"BookingId\"
+WHERE (\"p.Flight\".\"FlightNumber\" = @__flightNumber_0) AND (\"p.Flight\".\"DepartureDate\" = @__departureTime_1)" (0723d8ff)
+2019-12-31T20:51:31.5528126+02:00 0HLSE49PAEJ9P [INF] Executed action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 164.8608ms. (50a9e262)
+2019-12-31T20:51:31.5530476+02:00 0HLSE49PAEJ9P [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[FinnAir.BusinessLogic.Domain.PassengerModel, FinnAir.BusinessLogic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-12-31T20:51:31.5564643+02:00 0HLSE49PAEJ9P [INF] Executed action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" in 169.4915ms (afa2e885)
+2019-12-31T20:51:31.5566008+02:00 0HLSE49PAEJ9P [INF] Executed endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (99874f2b)
+2019-12-31T20:51:31.5567379+02:00 0HLSE49PAEJ9P [INF] Request finished in 178.5408ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T20:51:31.7799394+02:00 0HLSE49PAEJ9Q [INF] Request starting HTTP/2.0 POST https://localhost:44368/Identity/Login application/json; charset=utf-8  (ca22a1cb)
+2019-12-31T20:51:31.7833902+02:00 0HLSE49PAEJ9Q [INF] Executing endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (500cc934)
+2019-12-31T20:51:31.7892685+02:00 0HLSE49PAEJ9Q [INF] Route matched with "{action = \"Login\", controller = \"Identity\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" (a44c0341)
+2019-12-31T20:51:31.7904843+02:00 0HLSE49PAEJ9Q [INF] Executing action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" with arguments (["FinnAir.Api.Contracts.Request.UserLoginRequest"]) - Validation state: Valid (4e3479ed)
+2019-12-31T20:51:31.8097462+02:00 0HLSE49PAEJ9Q [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T20:51:31.8264083+02:00 0HLSE49PAEJ9Q [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT u.\"Id\", u.\"AccessFailedCount\", u.\"ConcurrencyStamp\", u.\"Email\", u.\"EmailConfirmed\", u.\"LockoutEnabled\", u.\"LockoutEnd\", u.\"NormalizedEmail\", u.\"NormalizedUserName\", u.\"PasswordHash\", u.\"PhoneNumber\", u.\"PhoneNumberConfirmed\", u.\"SecurityStamp\", u.\"TwoFactorEnabled\", u.\"UserName\"
+FROM \"AspNetUsers\" AS u
+WHERE u.\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 1" (0723d8ff)
+2019-12-31T20:51:31.8385512+02:00 0HLSE49PAEJ9Q [INF] Executed action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 47.9259ms. (50a9e262)
+2019-12-31T20:51:31.8391719+02:00 0HLSE49PAEJ9Q [INF] Executing ObjectResult, writing value of type '"FinnAir.Api.Contracts.AuthSuccessResponse"'. (8a1b66c8)
+2019-12-31T20:51:31.8393733+02:00 0HLSE49PAEJ9Q [INF] Executed action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" in 50.0285ms (afa2e885)
+2019-12-31T20:51:31.8394296+02:00 0HLSE49PAEJ9Q [INF] Executed endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (99874f2b)
+2019-12-31T20:51:31.8395621+02:00 0HLSE49PAEJ9Q [INF] Request finished in 59.6461ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T20:51:31.8399428+02:00 0HLSE49PAEJ9R [INF] Request starting HTTP/2.0 GET https://localhost:44368/Passengers?flightNumber=FA2490&&departureDate=2019-12-12   (ca22a1cb)
+2019-12-31T20:51:31.8404195+02:00 0HLSE49PAEJ9R [INF] Successfully validated the token. (60169667)
+2019-12-31T20:51:31.8425255+02:00 0HLSE49PAEJ9R [INF] Executing endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (500cc934)
+2019-12-31T20:51:31.8473326+02:00 0HLSE49PAEJ9R [INF] Route matched with "{action = \"GetPassengers\", controller = \"Passengers\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" (a44c0341)
+2019-12-31T20:51:31.8476796+02:00 0HLSE49PAEJ9R [INF] Authorization was successful. (0d575a54)
+2019-12-31T20:51:31.8481387+02:00 0HLSE49PAEJ9R [INF] Executing action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" with arguments (["FA2490", "2019-12-12"]) - Validation state: Valid (4e3479ed)
+2019-12-31T20:51:31.8517591+02:00 0HLSE49PAEJ9R [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T20:51:31.8537917+02:00 0HLSE49PAEJ9R [WRN] The Include operation for navigation '"[p].Booking"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T20:51:31.8538805+02:00 0HLSE49PAEJ9R [WRN] The Include operation for navigation '"[p].Flight"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T20:51:31.8539625+02:00 0HLSE49PAEJ9R [WRN] The Include operation for navigation '"[p].Booking.Passenger"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T20:51:31.8705046+02:00 0HLSE49PAEJ9R [INF] Executed DbCommand ("2"ms) [Parameters=["@__flightNumber_0='?' (Size = 150), @__departureTime_1='?' (DbType = DateTime)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"p.Booking.Passenger\".\"Id\", \"p.Booking.Passenger\".\"BookingId\", \"p.Booking.Passenger\".\"Email\", \"p.Booking.Passenger\".\"Firstname\", \"p.Booking.Passenger\".\"LastName\"
+FROM \"BookingFlights\" AS p
+INNER JOIN \"Flights\" AS \"p.Flight\" ON p.\"FlightId\" = \"p.Flight\".\"Id\"
+INNER JOIN \"Bookings\" AS \"p.Booking\" ON p.\"BookingId\" = \"p.Booking\".\"Id\"
+INNER JOIN \"Passengers\" AS \"p.Booking.Passenger\" ON \"p.Booking\".\"Id\" = \"p.Booking.Passenger\".\"BookingId\"
+WHERE (\"p.Flight\".\"FlightNumber\" = @__flightNumber_0) AND (\"p.Flight\".\"DepartureDate\" = @__departureTime_1)" (0723d8ff)
+2019-12-31T20:51:31.8932538+02:00 0HLSE49PAEJ9R [INF] Executed action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 45.0234ms. (50a9e262)
+2019-12-31T20:51:31.8934062+02:00 0HLSE49PAEJ9R [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[FinnAir.BusinessLogic.Domain.PassengerModel, FinnAir.BusinessLogic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-12-31T20:51:31.8946368+02:00 0HLSE49PAEJ9R [INF] Executed action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" in 47.233ms (afa2e885)
+2019-12-31T20:51:31.8946919+02:00 0HLSE49PAEJ9R [INF] Executed endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (99874f2b)
+2019-12-31T20:51:31.8947955+02:00 0HLSE49PAEJ9R [INF] Request finished in 54.8538ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T20:51:32.1065054+02:00 0HLSE49PAEJ9S [INF] Request starting HTTP/2.0 POST https://localhost:44368/Identity/Login application/json; charset=utf-8  (ca22a1cb)
+2019-12-31T20:51:32.1111742+02:00 0HLSE49PAEJ9S [INF] Executing endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (500cc934)
+2019-12-31T20:51:32.1194470+02:00 0HLSE49PAEJ9S [INF] Route matched with "{action = \"Login\", controller = \"Identity\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" (a44c0341)
+2019-12-31T20:51:32.1209375+02:00 0HLSE49PAEJ9S [INF] Executing action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" with arguments (["FinnAir.Api.Contracts.Request.UserLoginRequest"]) - Validation state: Valid (4e3479ed)
+2019-12-31T20:51:32.1221452+02:00 0HLSE49PAEJ9S [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T20:51:32.1406932+02:00 0HLSE49PAEJ9S [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT u.\"Id\", u.\"AccessFailedCount\", u.\"ConcurrencyStamp\", u.\"Email\", u.\"EmailConfirmed\", u.\"LockoutEnabled\", u.\"LockoutEnd\", u.\"NormalizedEmail\", u.\"NormalizedUserName\", u.\"PasswordHash\", u.\"PhoneNumber\", u.\"PhoneNumberConfirmed\", u.\"SecurityStamp\", u.\"TwoFactorEnabled\", u.\"UserName\"
+FROM \"AspNetUsers\" AS u
+WHERE u.\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 1" (0723d8ff)
+2019-12-31T20:51:32.1607562+02:00 0HLSE49PAEJ9S [INF] Executed action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 39.6469ms. (50a9e262)
+2019-12-31T20:51:32.1612716+02:00 0HLSE49PAEJ9S [INF] Executing ObjectResult, writing value of type '"FinnAir.Api.Contracts.AuthSuccessResponse"'. (8a1b66c8)
+2019-12-31T20:51:32.1615003+02:00 0HLSE49PAEJ9S [INF] Executed action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" in 41.9651ms (afa2e885)
+2019-12-31T20:51:32.1615674+02:00 0HLSE49PAEJ9S [INF] Executed endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (99874f2b)
+2019-12-31T20:51:32.1617433+02:00 0HLSE49PAEJ9S [INF] Request finished in 55.2845ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T20:51:32.1621950+02:00 0HLSE49PAEJ9T [INF] Request starting HTTP/2.0 GET https://localhost:44368/Passengers/89   (ca22a1cb)
+2019-12-31T20:51:32.1625920+02:00 0HLSE49PAEJ9T [INF] Successfully validated the token. (60169667)
+2019-12-31T20:51:32.1647879+02:00 0HLSE49PAEJ9T [INF] Executing endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)"' (500cc934)
+2019-12-31T20:51:32.1684766+02:00 0HLSE49PAEJ9T [INF] Route matched with "{action = \"GetPassengerById\", controller = \"Passengers\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)" (a44c0341)
+2019-12-31T20:51:32.1687861+02:00 0HLSE49PAEJ9T [INF] Authorization was successful. (0d575a54)
+2019-12-31T20:51:32.1692588+02:00 0HLSE49PAEJ9T [INF] Executing action method "FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)" with arguments (["89"]) - Validation state: Valid (4e3479ed)
+2019-12-31T20:51:32.1699705+02:00 0HLSE49PAEJ9T [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T20:51:32.2208091+02:00 0HLSE49PAEJ9T [INF] Executed DbCommand ("2"ms) [Parameters=["@__passengerId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"Id\" AS \"PassengerId\", x.\"Firstname\", x.\"LastName\", x.\"Email\", x.\"BookingId\", \"x.Booking\".\"Id\"
+FROM \"Passengers\" AS x
+LEFT JOIN \"Bookings\" AS \"x.Booking\" ON x.\"BookingId\" = \"x.Booking\".\"Id\"
+WHERE x.\"Id\" = @__passengerId_0
+ORDER BY x.\"Id\", \"x.Booking\".\"Id\"
+LIMIT 2" (0723d8ff)
+2019-12-31T20:51:32.2235460+02:00 0HLSE49PAEJ9T [INF] Wrong Passenger Id (4ed9b1c4)
+2019-12-31T20:51:32.2238253+02:00 0HLSE49PAEJ9T [INF] Executed action method "FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.BadRequestObjectResult" in 54.4186ms. (50a9e262)
+2019-12-31T20:51:32.2241143+02:00 0HLSE49PAEJ9T [INF] Executing ObjectResult, writing value of type '"System.String"'. (8a1b66c8)
+2019-12-31T20:51:32.2246030+02:00 0HLSE49PAEJ9T [INF] Executed action "FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)" in 56.0405ms (afa2e885)
+2019-12-31T20:51:32.2247129+02:00 0HLSE49PAEJ9T [INF] Executed endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengerById (FinnAir.Api)"' (99874f2b)
+2019-12-31T20:51:32.2249086+02:00 0HLSE49PAEJ9T [INF] Request finished in 62.6885ms 400 text/plain; charset=utf-8 (791a596a)
+2019-12-31T22:38:11.1889639+02:00 0HLSE65D116EC [INF] Request starting HTTP/2.0 POST https://localhost:44368/Identity/Login application/json; charset=utf-8  (ca22a1cb)
+2019-12-31T22:38:11.2806453+02:00 0HLSE65D116EC [INF] Executing endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (500cc934)
+2019-12-31T22:38:11.3039515+02:00 0HLSE65D116EC [INF] Route matched with "{action = \"Login\", controller = \"Identity\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" (a44c0341)
+2019-12-31T22:38:11.3387185+02:00 0HLSE65D116EC [INF] Executing action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" with arguments (["FinnAir.Api.Contracts.Request.UserLoginRequest"]) - Validation state: Valid (4e3479ed)
+2019-12-31T22:38:11.3524390+02:00 0HLSE65D116EC [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T22:38:11.3708573+02:00 0HLSE65D116EC [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT u.\"Id\", u.\"AccessFailedCount\", u.\"ConcurrencyStamp\", u.\"Email\", u.\"EmailConfirmed\", u.\"LockoutEnabled\", u.\"LockoutEnd\", u.\"NormalizedEmail\", u.\"NormalizedUserName\", u.\"PasswordHash\", u.\"PhoneNumber\", u.\"PhoneNumberConfirmed\", u.\"SecurityStamp\", u.\"TwoFactorEnabled\", u.\"UserName\"
+FROM \"AspNetUsers\" AS u
+WHERE u.\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 1" (0723d8ff)
+2019-12-31T22:38:11.4044262+02:00 0HLSE65D116EC [INF] Executed action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 60.4022ms. (50a9e262)
+2019-12-31T22:38:11.4140837+02:00 0HLSE65D116EC [INF] Executing ObjectResult, writing value of type '"FinnAir.Api.Contracts.AuthSuccessResponse"'. (8a1b66c8)
+2019-12-31T22:38:11.4395812+02:00 0HLSE65D116EC [INF] Executed action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" in 125.9051ms (afa2e885)
+2019-12-31T22:38:11.4432250+02:00 0HLSE65D116EC [INF] Executed endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (99874f2b)
+2019-12-31T22:38:11.4552990+02:00 0HLSE65D116EC [INF] Request finished in 271.6547ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T22:38:11.4613223+02:00 0HLSE65D116ED [INF] Request starting HTTP/2.0 GET https://localhost:44368/Passengers?flightNumber=&&departureDate=2019-12-12   (ca22a1cb)
+2019-12-31T22:38:11.4705383+02:00 0HLSE65D116ED [INF] Successfully validated the token. (60169667)
+2019-12-31T22:38:11.4749979+02:00 0HLSE65D116ED [INF] Executing endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (500cc934)
+2019-12-31T22:38:11.4818558+02:00 0HLSE65D116ED [INF] Route matched with "{action = \"GetPassengers\", controller = \"Passengers\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" (a44c0341)
+2019-12-31T22:38:11.4928314+02:00 0HLSE65D116ED [INF] Authorization was successful. (0d575a54)
+2019-12-31T22:38:11.4987881+02:00 0HLSE65D116ED [INF] Executing action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" with arguments (["", "2019-12-12"]) - Validation state: Valid (4e3479ed)
+2019-12-31T22:38:11.5031891+02:00 0HLSE65D116ED [INF] Flight number cannot be empty and Departure Time must be in this format 'yyyy - MMM - dd' (f47604d9)
+2019-12-31T22:38:11.5054316+02:00 0HLSE65D116ED [INF] Executed action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.BadRequestObjectResult" in 4.7194ms. (50a9e262)
+2019-12-31T22:38:11.5076509+02:00 0HLSE65D116ED [INF] Executing ObjectResult, writing value of type '"FinnAir.Api.Contracts.FailResponse"'. (8a1b66c8)
+2019-12-31T22:38:11.5137544+02:00 0HLSE65D116ED [INF] Executed action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" in 29.2533ms (afa2e885)
+2019-12-31T22:38:11.5303660+02:00 0HLSE65D116ED [INF] Executed endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (99874f2b)
+2019-12-31T22:38:11.5336206+02:00 0HLSE65D116ED [INF] Request finished in 71.9899ms 400 application/json; charset=utf-8 (791a596a)
+2019-12-31T22:38:39.5340035+02:00 0HLSE65LFAFJ5 [INF] Request starting HTTP/2.0 POST https://localhost:44368/Identity/Login application/json; charset=utf-8  (ca22a1cb)
+2019-12-31T22:38:39.6605947+02:00 0HLSE65LFAFJ5 [INF] Executing endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (500cc934)
+2019-12-31T22:38:39.6866526+02:00 0HLSE65LFAFJ5 [INF] Route matched with "{action = \"Login\", controller = \"Identity\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" (a44c0341)
+2019-12-31T22:38:39.7222723+02:00 0HLSE65LFAFJ5 [INF] Executing action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" with arguments (["FinnAir.Api.Contracts.Request.UserLoginRequest"]) - Validation state: Valid (4e3479ed)
+2019-12-31T22:38:39.7335801+02:00 0HLSE65LFAFJ5 [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T22:38:39.7464176+02:00 0HLSE65LFAFJ5 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT u.\"Id\", u.\"AccessFailedCount\", u.\"ConcurrencyStamp\", u.\"Email\", u.\"EmailConfirmed\", u.\"LockoutEnabled\", u.\"LockoutEnd\", u.\"NormalizedEmail\", u.\"NormalizedUserName\", u.\"PasswordHash\", u.\"PhoneNumber\", u.\"PhoneNumberConfirmed\", u.\"SecurityStamp\", u.\"TwoFactorEnabled\", u.\"UserName\"
+FROM \"AspNetUsers\" AS u
+WHERE u.\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 1" (0723d8ff)
+2019-12-31T22:38:39.7752955+02:00 0HLSE65LFAFJ5 [INF] Executed action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 48.4242ms. (50a9e262)
+2019-12-31T22:38:39.7841958+02:00 0HLSE65LFAFJ5 [INF] Executing ObjectResult, writing value of type '"FinnAir.Api.Contracts.AuthSuccessResponse"'. (8a1b66c8)
+2019-12-31T22:38:39.8052002+02:00 0HLSE65LFAFJ5 [INF] Executed action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" in 113.5477ms (afa2e885)
+2019-12-31T22:38:39.8080009+02:00 0HLSE65LFAFJ5 [INF] Executed endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (99874f2b)
+2019-12-31T22:38:39.8214107+02:00 0HLSE65LFAFJ5 [INF] Request finished in 295.0866ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T22:38:52.9741952+02:00 0HLSE65LFAFJ6 [INF] Request starting HTTP/2.0 GET https://localhost:44368/Passengers?flightNumber=00000&&departureDate=2019-12-12   (ca22a1cb)
+2019-12-31T22:38:53.0034360+02:00 0HLSE65LFAFJ6 [INF] Successfully validated the token. (60169667)
+2019-12-31T22:38:53.0088018+02:00 0HLSE65LFAFJ6 [INF] Executing endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (500cc934)
+2019-12-31T22:38:53.0155880+02:00 0HLSE65LFAFJ6 [INF] Route matched with "{action = \"GetPassengers\", controller = \"Passengers\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" (a44c0341)
+2019-12-31T22:38:53.0392316+02:00 0HLSE65LFAFJ6 [INF] Authorization was successful. (0d575a54)
+2019-12-31T22:38:53.0519496+02:00 0HLSE65LFAFJ6 [INF] Executing action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" with arguments (["00000", "2019-12-12"]) - Validation state: Valid (4e3479ed)
+2019-12-31T22:38:53.0620018+02:00 0HLSE65LFAFJ6 [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T22:38:53.1266923+02:00 0HLSE65LFAFJ6 [WRN] The Include operation for navigation '"[p].Booking"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T22:38:53.1301563+02:00 0HLSE65LFAFJ6 [WRN] The Include operation for navigation '"[p].Flight"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T22:38:53.1320865+02:00 0HLSE65LFAFJ6 [WRN] The Include operation for navigation '"[p].Booking.Passenger"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T22:38:53.2433382+02:00 0HLSE65LFAFJ6 [INF] Executed DbCommand ("11"ms) [Parameters=["@__flightNumber_0='?' (Size = 150), @__departureTime_1='?' (DbType = DateTime)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"p.Booking.Passenger\".\"Id\", \"p.Booking.Passenger\".\"BookingId\", \"p.Booking.Passenger\".\"Email\", \"p.Booking.Passenger\".\"Firstname\", \"p.Booking.Passenger\".\"LastName\"
+FROM \"BookingFlights\" AS p
+INNER JOIN \"Flights\" AS \"p.Flight\" ON p.\"FlightId\" = \"p.Flight\".\"Id\"
+INNER JOIN \"Bookings\" AS \"p.Booking\" ON p.\"BookingId\" = \"p.Booking\".\"Id\"
+INNER JOIN \"Passengers\" AS \"p.Booking.Passenger\" ON \"p.Booking\".\"Id\" = \"p.Booking.Passenger\".\"BookingId\"
+WHERE (\"p.Flight\".\"FlightNumber\" = @__flightNumber_0) AND (\"p.Flight\".\"DepartureDate\" = @__departureTime_1)" (0723d8ff)
+2019-12-31T22:38:53.2560546+02:00 0HLSE65LFAFJ6 [INF] Executed action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 201.8891ms. (50a9e262)
+2019-12-31T22:38:53.2581436+02:00 0HLSE65LFAFJ6 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[FinnAir.BusinessLogic.Domain.PassengerModel, FinnAir.BusinessLogic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-12-31T22:38:53.2616775+02:00 0HLSE65LFAFJ6 [INF] Executed action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" in 244.1865ms (afa2e885)
+2019-12-31T22:38:53.2635576+02:00 0HLSE65LFAFJ6 [INF] Executed endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (99874f2b)
+2019-12-31T22:38:53.2991974+02:00 0HLSE65LFAFJ6 [INF] Request finished in 292.9214ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T22:40:54.5755010+02:00 0HLSE66TN5HO6 [INF] Request starting HTTP/2.0 POST https://localhost:44368/Identity/Login application/json; charset=utf-8  (ca22a1cb)
+2019-12-31T22:40:54.6816651+02:00 0HLSE66TN5HO6 [INF] Executing endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (500cc934)
+2019-12-31T22:40:54.7078402+02:00 0HLSE66TN5HO6 [INF] Route matched with "{action = \"Login\", controller = \"Identity\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" (a44c0341)
+2019-12-31T22:40:54.7418654+02:00 0HLSE66TN5HO6 [INF] Executing action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" with arguments (["FinnAir.Api.Contracts.Request.UserLoginRequest"]) - Validation state: Valid (4e3479ed)
+2019-12-31T22:40:54.7616405+02:00 0HLSE66TN5HO6 [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T22:40:54.7763292+02:00 0HLSE66TN5HO6 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT u.\"Id\", u.\"AccessFailedCount\", u.\"ConcurrencyStamp\", u.\"Email\", u.\"EmailConfirmed\", u.\"LockoutEnabled\", u.\"LockoutEnd\", u.\"NormalizedEmail\", u.\"NormalizedUserName\", u.\"PasswordHash\", u.\"PhoneNumber\", u.\"PhoneNumberConfirmed\", u.\"SecurityStamp\", u.\"TwoFactorEnabled\", u.\"UserName\"
+FROM \"AspNetUsers\" AS u
+WHERE u.\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 1" (0723d8ff)
+2019-12-31T22:40:54.8064626+02:00 0HLSE66TN5HO6 [INF] Executed action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 59.2098ms. (50a9e262)
+2019-12-31T22:40:54.8164694+02:00 0HLSE66TN5HO6 [INF] Executing ObjectResult, writing value of type '"FinnAir.Api.Contracts.AuthSuccessResponse"'. (8a1b66c8)
+2019-12-31T22:40:54.8409241+02:00 0HLSE66TN5HO6 [INF] Executed action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" in 127.1259ms (afa2e885)
+2019-12-31T22:40:54.8448711+02:00 0HLSE66TN5HO6 [INF] Executed endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (99874f2b)
+2019-12-31T22:40:54.8600125+02:00 0HLSE66TN5HO6 [INF] Request finished in 292.6779ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T22:41:02.0706763+02:00 0HLSE66TN5HO7 [INF] Request starting HTTP/2.0 GET https://localhost:44368/Passengers?flightNumber=FA2490&&departureDate=2019-12-12   (ca22a1cb)
+2019-12-31T22:41:02.1007511+02:00 0HLSE66TN5HO7 [INF] Successfully validated the token. (60169667)
+2019-12-31T22:41:02.1057761+02:00 0HLSE66TN5HO7 [INF] Executing endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (500cc934)
+2019-12-31T22:41:02.1127330+02:00 0HLSE66TN5HO7 [INF] Route matched with "{action = \"GetPassengers\", controller = \"Passengers\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" (a44c0341)
+2019-12-31T22:41:02.1253509+02:00 0HLSE66TN5HO7 [INF] Authorization was successful. (0d575a54)
+2019-12-31T22:41:02.1303469+02:00 0HLSE66TN5HO7 [INF] Executing action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" with arguments (["FA2490", "2019-12-12"]) - Validation state: Valid (4e3479ed)
+2019-12-31T22:41:02.1420068+02:00 0HLSE66TN5HO7 [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T22:41:02.2003747+02:00 0HLSE66TN5HO7 [WRN] The Include operation for navigation '"[p].Booking"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T22:41:02.2038449+02:00 0HLSE66TN5HO7 [WRN] The Include operation for navigation '"[p].Flight"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T22:41:02.2062888+02:00 0HLSE66TN5HO7 [WRN] The Include operation for navigation '"[p].Booking.Passenger"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T22:41:02.3020731+02:00 0HLSE66TN5HO7 [INF] Executed DbCommand ("9"ms) [Parameters=["@__flightNumber_0='?' (Size = 150), @__departureTime_1='?' (DbType = DateTime)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"p.Booking.Passenger\".\"Id\", \"p.Booking.Passenger\".\"BookingId\", \"p.Booking.Passenger\".\"Email\", \"p.Booking.Passenger\".\"Firstname\", \"p.Booking.Passenger\".\"LastName\"
+FROM \"BookingFlights\" AS p
+INNER JOIN \"Flights\" AS \"p.Flight\" ON p.\"FlightId\" = \"p.Flight\".\"Id\"
+INNER JOIN \"Bookings\" AS \"p.Booking\" ON p.\"BookingId\" = \"p.Booking\".\"Id\"
+INNER JOIN \"Passengers\" AS \"p.Booking.Passenger\" ON \"p.Booking\".\"Id\" = \"p.Booking.Passenger\".\"BookingId\"
+WHERE (\"p.Flight\".\"FlightNumber\" = @__flightNumber_0) AND (\"p.Flight\".\"DepartureDate\" = @__departureTime_1)" (0723d8ff)
+2019-12-31T22:41:02.3320136+02:00 0HLSE66TN5HO7 [INF] Executed action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 198.9554ms. (50a9e262)
+2019-12-31T22:41:02.3340337+02:00 0HLSE66TN5HO7 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[FinnAir.BusinessLogic.Domain.PassengerModel, FinnAir.BusinessLogic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-12-31T22:41:02.3425847+02:00 0HLSE66TN5HO7 [INF] Executed action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" in 225.4155ms (afa2e885)
+2019-12-31T22:41:02.3455691+02:00 0HLSE66TN5HO7 [INF] Executed endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (99874f2b)
+2019-12-31T22:41:02.3805067+02:00 0HLSE66TN5HO7 [INF] Request finished in 289.5041ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T22:44:26.2305923+02:00 0HLSE68SPLOTH [INF] Request starting HTTP/2.0 POST https://localhost:44368/Identity/Login application/json; charset=utf-8  (ca22a1cb)
+2019-12-31T22:44:26.3295782+02:00 0HLSE68SPLOTH [INF] Executing endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (500cc934)
+2019-12-31T22:44:26.3527035+02:00 0HLSE68SPLOTH [INF] Route matched with "{action = \"Login\", controller = \"Identity\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" (a44c0341)
+2019-12-31T22:44:26.3822475+02:00 0HLSE68SPLOTH [INF] Executing action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" with arguments (["FinnAir.Api.Contracts.Request.UserLoginRequest"]) - Validation state: Valid (4e3479ed)
+2019-12-31T22:44:26.3932578+02:00 0HLSE68SPLOTH [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T22:44:26.4072559+02:00 0HLSE68SPLOTH [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT u.\"Id\", u.\"AccessFailedCount\", u.\"ConcurrencyStamp\", u.\"Email\", u.\"EmailConfirmed\", u.\"LockoutEnabled\", u.\"LockoutEnd\", u.\"NormalizedEmail\", u.\"NormalizedUserName\", u.\"PasswordHash\", u.\"PhoneNumber\", u.\"PhoneNumberConfirmed\", u.\"SecurityStamp\", u.\"TwoFactorEnabled\", u.\"UserName\"
+FROM \"AspNetUsers\" AS u
+WHERE u.\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 1" (0723d8ff)
+2019-12-31T22:44:26.4383223+02:00 0HLSE68SPLOTH [INF] Executed action method "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 50.9786ms. (50a9e262)
+2019-12-31T22:44:26.4485730+02:00 0HLSE68SPLOTH [INF] Executing ObjectResult, writing value of type '"FinnAir.Api.Contracts.AuthSuccessResponse"'. (8a1b66c8)
+2019-12-31T22:44:26.4752726+02:00 0HLSE68SPLOTH [INF] Executed action "FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)" in 116.4336ms (afa2e885)
+2019-12-31T22:44:26.4786615+02:00 0HLSE68SPLOTH [INF] Executed endpoint '"FinnAir.Api.Controllers.IdentityController.Login (FinnAir.Api)"' (99874f2b)
+2019-12-31T22:44:26.4944845+02:00 0HLSE68SPLOTH [INF] Request finished in 270.939ms 200 application/json; charset=utf-8 (791a596a)
+2019-12-31T22:44:30.9334759+02:00 0HLSE68SPLOTI [INF] Request starting HTTP/2.0 GET https://localhost:44368/Passengers?flightNumber=FA2490&&departureDate=2019-12-12   (ca22a1cb)
+2019-12-31T22:44:30.9604457+02:00 0HLSE68SPLOTI [INF] Successfully validated the token. (60169667)
+2019-12-31T22:44:30.9653126+02:00 0HLSE68SPLOTI [INF] Executing endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (500cc934)
+2019-12-31T22:44:30.9715299+02:00 0HLSE68SPLOTI [INF] Route matched with "{action = \"GetPassengers\", controller = \"Passengers\", page = \"\", area = \"\"}". Executing action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" (a44c0341)
+2019-12-31T22:44:30.9845142+02:00 0HLSE68SPLOTI [INF] Authorization was successful. (0d575a54)
+2019-12-31T22:44:30.9907925+02:00 0HLSE68SPLOTI [INF] Executing action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" with arguments (["FA2490", "2019-12-12"]) - Validation state: Valid (4e3479ed)
+2019-12-31T22:44:50.0230001+02:00 0HLSE68SPLOTI [INF] Entity Framework Core "2.2.6-servicing-10079" initialized '"FinnAirContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-12-31T22:44:50.1180385+02:00 0HLSE68SPLOTI [WRN] The Include operation for navigation '"[p].Booking"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T22:44:50.1216702+02:00 0HLSE68SPLOTI [WRN] The Include operation for navigation '"[p].Flight"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T22:44:50.1238400+02:00 0HLSE68SPLOTI [WRN] The Include operation for navigation '"[p].Booking.Passenger"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-12-31T22:44:50.2279356+02:00 0HLSE68SPLOTI [INF] Executed DbCommand ("10"ms) [Parameters=["@__flightNumber_0='?' (Size = 150), @__departureTime_1='?' (DbType = DateTime)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"p.Booking.Passenger\".\"Id\", \"p.Booking.Passenger\".\"BookingId\", \"p.Booking.Passenger\".\"Email\", \"p.Booking.Passenger\".\"Firstname\", \"p.Booking.Passenger\".\"LastName\"
+FROM \"BookingFlights\" AS p
+INNER JOIN \"Flights\" AS \"p.Flight\" ON p.\"FlightId\" = \"p.Flight\".\"Id\"
+INNER JOIN \"Bookings\" AS \"p.Booking\" ON p.\"BookingId\" = \"p.Booking\".\"Id\"
+INNER JOIN \"Passengers\" AS \"p.Booking.Passenger\" ON \"p.Booking\".\"Id\" = \"p.Booking.Passenger\".\"BookingId\"
+WHERE (\"p.Flight\".\"FlightNumber\" = @__flightNumber_0) AND (\"p.Flight\".\"DepartureDate\" = @__departureTime_1)" (0723d8ff)
+2019-12-31T22:45:15.4466656+02:00 0HLSE68SPLOTI [INF] Executed action method "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 44453.1867ms. (50a9e262)
+2019-12-31T22:45:15.4496032+02:00 0HLSE68SPLOTI [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[FinnAir.BusinessLogic.Domain.PassengerModel, FinnAir.BusinessLogic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-12-31T22:45:15.4564948+02:00 0HLSE68SPLOTI [INF] Executed action "FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)" in 44482.592ms (afa2e885)
+2019-12-31T22:45:15.4597596+02:00 0HLSE68SPLOTI [INF] Executed endpoint '"FinnAir.Api.Controllers.PassengersController.GetPassengers (FinnAir.Api)"' (99874f2b)
+2019-12-31T22:45:15.4995158+02:00 0HLSE68SPLOTI [INF] Request finished in 44530.0213ms 200 application/json; charset=utf-8 (791a596a)

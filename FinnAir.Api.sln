@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinnAir.Api", "FinnAir.Api\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinnAir.Test", "FinnAir.Test\FinnAir.Test.csproj", "{48BC5351-6736-4D83-ABFD-21FC662D3C06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinnAir.BusinessLogic", "FinnAir.BusinessLogic\FinnAir.BusinessLogic.csproj", "{740A9706-2777-461D-BBAE-8617FB1CC0B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinnAir.BusinessLogic", "FinnAir.BusinessLogic\FinnAir.BusinessLogic.csproj", "{740A9706-2777-461D-BBAE-8617FB1CC0B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinnAir.DataLayer", "FinnAir.DataLayer\FinnAir.DataLayer.csproj", "{85A39199-BB5A-42BE-9A44-2BE541216911}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinnAir.DataLayer", "FinnAir.DataLayer\FinnAir.DataLayer.csproj", "{85A39199-BB5A-42BE-9A44-2BE541216911}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2F910A19-6626-4A4E-AE82-C72AB7AB6B7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{85A39199-BB5A-42BE-9A44-2BE541216911}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85A39199-BB5A-42BE-9A44-2BE541216911}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85A39199-BB5A-42BE-9A44-2BE541216911}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F910A19-6626-4A4E-AE82-C72AB7AB6B7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F910A19-6626-4A4E-AE82-C72AB7AB6B7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F910A19-6626-4A4E-AE82-C72AB7AB6B7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F910A19-6626-4A4E-AE82-C72AB7AB6B7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
