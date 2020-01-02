@@ -29,7 +29,7 @@ namespace FinnAir.BusinessLogic.Repository
                                      .Include(x => x.Flight)
                                      .Include(x => x.Booking.Passenger)
                                      .Where(x => x.Flight.FlightNumber == flightNumber && x.Flight.DepartureDate == departureTime)
-                                     .SelectMany(x=>x.Booking.Passenger).ToListAsync();
+                                     .SelectMany(x=>x.Booking.Passenger).Distinct().ToListAsync();
 
             var result = passengers.Select(p => new PassengerModel
             {
